@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         services: [],
         products: [],
         team: [],
-        blogs: []
+        blogs: [],
+        partners: []
     };
 
     let currentPassword = sessionStorage.getItem('cms_admin_password') || null;
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderList('products', cmsData.products, ['title', 'badge', 'desc']);
         renderList('team', cmsData.team, ['name', 'role', 'image']);
         renderList('blogs', cmsData.blogs, ['title', 'author', 'date', 'image']);
+        renderList('partners', cmsData.partners, ['name', 'image']);
         lucide.createIcons();
     }
 
@@ -174,6 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
             { key: 'author', label: 'Author Name', type: 'text' },
             { key: 'date', label: 'Date', type: 'text' },
             { key: 'image', label: 'Cover Image URL', type: 'text' }
+        ],
+        partners: [
+            { key: 'name', label: 'Partner Name', type: 'text' },
+            { key: 'image', label: 'Logo URL', type: 'text' }
         ]
     };
 
@@ -270,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Save each category separately to the new Supabase API structure
-            const categories = ['services', 'products', 'team', 'blogs'];
+            const categories = ['services', 'products', 'team', 'blogs', 'partners'];
             let allSuccess = true;
 
             for (const type of categories) {

@@ -88,6 +88,9 @@
                     <button class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-left rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" data-target="blogs">
                         <i data-lucide="file-text" class="w-5 h-5"></i> Blogs
                     </button>
+                    <button class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-left rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" data-target="partners">
+                        <i data-lucide="handshake" class="w-5 h-5"></i> Partners
+                    </button>
                 </nav>
             </aside>
 
@@ -136,6 +139,17 @@
                         </button>
                     </div>
                     <div id="list-blogs" class="grid lg:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+                </div>
+
+                <!-- Partners Tab -->
+                <div id="tab-partners" class="tab-content hidden">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-brand-navy">Partners & Collaborators</h2>
+                        <button class="btn-add flex items-center gap-2 text-brand-navy bg-white border border-slate-200 px-4 py-2 rounded-lg hover:border-brand-gold transition-colors font-semibold" data-type="partners">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Add Partner
+                        </button>
+                    </div>
+                    <div id="list-partners" class="grid lg:grid-cols-2 xl:grid-cols-4 gap-6"></div>
                 </div>
                 
             </main>

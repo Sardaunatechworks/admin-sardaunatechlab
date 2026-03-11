@@ -25,8 +25,8 @@ export default async function handler(req, res) {
         } catch (error) {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
-    } 
-    
+    }
+
     if (req.method === 'POST') {
         try {
             const providedPassword = req.headers.authorization;
@@ -37,15 +37,15 @@ export default async function handler(req, res) {
             }
 
             const { type, items } = req.body;
-            
-            if (!type || !['services', 'products', 'team', 'blogs'].includes(type) || !Array.isArray(items)) {
-                 return res.status(400).json({ error: 'Invalid data format' });
+
+            if (!type || !['services', 'products', 'team', 'blogs', 'partners'].includes(type) || !Array.isArray(items)) {
+                return res.status(400).json({ error: 'Invalid data format' });
             }
 
             await supabase.from(type).delete().neq('id', 'dummy_id_to_match_all');
-            
+
             if (items.length > 0) {
-                 await supabase.from(type).insert(items);
+                await supabase.from(type).insert(items);
             }
 
             return res.status(200).json({ status: 'success', message: 'Updated successfully' });
