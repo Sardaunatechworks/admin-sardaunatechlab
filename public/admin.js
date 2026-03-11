@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                     'Authorization': pwd
                 },
-                body: JSON.stringify(cmsData) // send current (empty or stale) data just to test auth
+                body: JSON.stringify({ type: 'services', items: cmsData.services }) // Send valid structure to avoid 400 error
             });
             return res.ok;
         } catch (e) {
