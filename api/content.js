@@ -9,18 +9,20 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-            const [servicesRes, productsRes, teamRes, blogsRes] = await Promise.all([
+            const [servicesRes, productsRes, teamRes, blogsRes, partnersRes] = await Promise.all([
                 supabase.from('services').select('*'),
                 supabase.from('products').select('*'),
                 supabase.from('team').select('*'),
-                supabase.from('blogs').select('*')
+                supabase.from('blogs').select('*'),
+                supabase.from('partners').select('*')
             ]);
 
             return res.status(200).json({
                 services: servicesRes.data || [],
                 products: productsRes.data || [],
                 team: teamRes.data || [],
-                blogs: blogsRes.data || []
+                blogs: blogsRes.data || [],
+                partners: partnersRes.data || []
             });
         } catch (error) {
             return res.status(500).json({ error: 'Internal Server Error' });

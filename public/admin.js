@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
         container.innerHTML = '';
 
+        if (!Array.isArray(items)) items = [];
         items.forEach((item, index) => {
             // Build simple preview summary based on type keys
             const previewHtml = keys.map(k => {
